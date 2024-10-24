@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <name>MonProjetJavaScript</name>
+    <version>1.0.0</version>
+    <description>Un projet JavaScript utilisant npm</description>
+    <dependencies>
+        <dependency>
+            <name>express</name>
+            <version>^4.17.1</version>
+        </dependency>
+        <dependency>
+            <name>lodash</name>
+            <version>^4.17.21</version>
+        </dependency>
+    </dependencies>
+</Package>
