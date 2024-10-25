@@ -1,18 +1,71 @@
-# Salesforce DX Project: Next Steps
+# Salesforce Apex Gestionnaire de Comptes 🚀
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Vue d'Ensemble ✨
+Ce projet démontre une **classe Apex** qui permet de gérer les objets **Account** dans Salesforce avec des opérations CRUD (Create, Read, Update, Delete). Il inclut également un **trigger personnalisé** pour automatiser certaines actions lors de la création d’un contact. Ce projet est une excellente démonstration de la gestion des données avec Apex, des triggers et des tests unitaires.
 
-## How Do You Plan to Deploy Your Changes?
+---
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Fonctionnalités 🛠️
+- **Gestion des Comptes (CRUD)** : Crée, modifie, met à jour et supprime des comptes dans Salesforce.
+- **Trigger de Bienvenue** : Un trigger Apex personnalisé envoie automatiquement un e-mail de bienvenue lors de la création d'un nouveau contact.
+- **Test Unitaire** : Les classes de test sont incluses pour valider le bon fonctionnement du code.
 
-## Configure Your Salesforce DX Project
+---
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Comment Utiliser 🔧
+### Prérequis 📋
+- Un **compte Salesforce Developer** actif.
+- **Salesforce CLI** installé sur votre machine.
 
-## Read All About It
+### Étapes d'installation 🚀
+1. Clonez ce dépôt :
+    ```bash
+    git clone https://github.com/votre-nom-utilisateur/gestionnaire-de-comptes-apex.git
+    cd gestionnaire-de-comptes-apex
+    ```
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+2. Déployez le code dans votre org Salesforce :
+    ```bash
+    sfdx force:source:deploy -p force-app
+    ```
+
+3. Exécutez les tests pour valider le bon fonctionnement :
+    ```bash
+    sfdx force:apex:test:run --resultformat human
+    ```
+
+---
+
+## Structure du Projet 🗂️
+- `src/classes` : Contient les classes Apex pour la gestion des comptes.
+- `src/triggers` : Contient le trigger personnalisé qui envoie un e-mail de bienvenue.
+- `src/tests` : Contient les classes de test pour vérifier que tout fonctionne correctement.
+
+---
+
+## Exemples de Code 🔍
+
+### Classe Apex pour la Gestion des Comptes
+```apex
+public class AccountManager {
+    public static Account createAccount(String name) {
+        Account acc = new Account(Name = name);
+        insert acc;
+        return acc;
+    }
+
+    public static void updateAccount(Id accountId, String newName) {
+        Account acc = [SELECT Id, Name FROM Account WHERE Id = :accountId];
+        acc.Name = newName;
+        update acc;
+    }
+    
+    public static void deleteAccount(Id accountId) {
+        Account acc = [SELECT Id FROM Account WHERE Id = :accountId];
+        delete acc;
+    }
+
+    public static Account getAccount(Id accountId) {
+        return [SELECT Id, Name FROM Account WHERE Id = :accountId];
+    }
+}
