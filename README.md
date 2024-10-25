@@ -1,71 +1,66 @@
-# Salesforce Apex Gestionnaire de Comptes 🚀
+# Salesforce Apex Gestionnaire de Comptes ⚙️
 
-## Vue d'Ensemble ✨
-Ce projet démontre une **classe Apex** qui permet de gérer les objets **Account** dans Salesforce avec des opérations CRUD (Create, Read, Update, Delete). Il inclut également un **trigger personnalisé** pour automatiser certaines actions lors de la création d’un contact. Ce projet est une excellente démonstration de la gestion des données avec Apex, des triggers et des tests unitaires.
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Java](https://img.shields.io/badge/Java-17-orange.svg)
+![Apex](https://img.shields.io/badge/Salesforce-Apex-00A1E0.svg)
+![Status](https://img.shields.io/badge/Status-Complete-success.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/akamidev/Salesforce-Apex-Gestionnaire-de-Comptes)
+![Stars](https://img.shields.io/github/stars/akamidev/Salesforce-Apex-Gestionnaire-de-Comptes)
+![Forks](https://img.shields.io/github/forks/akamidev/Salesforce-Apex-Gestionnaire-de-Comptes)
+
+## 📝 Vue d'Ensemble
+
+Ce projet présente une **classe Apex** qui gère les objets `Account` dans Salesforce. Les opérations CRUD (Create, Read, Update, Delete) sont implémentées ainsi qu’un **trigger** qui envoie un e-mail de bienvenue lorsqu’un nouveau contact est ajouté.
 
 ---
 
-## Fonctionnalités 🛠️
-- **Gestion des Comptes (CRUD)** : Crée, modifie, met à jour et supprime des comptes dans Salesforce.
-- **Trigger de Bienvenue** : Un trigger Apex personnalisé envoie automatiquement un e-mail de bienvenue lors de la création d'un nouveau contact.
-- **Test Unitaire** : Les classes de test sont incluses pour valider le bon fonctionnement du code.
+## ✨ Fonctionnalités
+
+- 🌐 **Gestion des comptes** (CRUD)
+- 📧 **Trigger** pour envoyer automatiquement un e-mail lors de la création d'un contact
+- ✅ **Classes de Test** pour valider les opérations CRUD
+- 📊 **Utilisation efficace de Salesforce** pour gérer les données clients
 
 ---
 
-## Comment Utiliser 🔧
-### Prérequis 📋
-- Un **compte Salesforce Developer** actif.
-- **Salesforce CLI** installé sur votre machine.
+## 🚀 Comment Utiliser
 
-### Étapes d'installation 🚀
-1. Clonez ce dépôt :
+1. **Cloner ce dépôt** :
     ```bash
-    git clone https://github.com/votre-nom-utilisateur/gestionnaire-de-comptes-apex.git
-    cd gestionnaire-de-comptes-apex
+    git clone https://github.com/akamidev/Salesforce-Apex-Gestionnaire-de-Comptes.git
     ```
 
-2. Déployez le code dans votre org Salesforce :
+2. **Déployer le projet** dans votre org Salesforce :
     ```bash
-    sfdx force:source:deploy -p force-app
+    sfdx force:source:deploy --sourcepath src/
     ```
 
-3. Exécutez les tests pour valider le bon fonctionnement :
+3. **Exécuter les tests unitaires** :
     ```bash
-    sfdx force:apex:test:run --resultformat human
+    sfdx force:apex:test:run --classnames AccountManagerTest
     ```
 
 ---
 
-## Structure du Projet 🗂️
-- `src/classes` : Contient les classes Apex pour la gestion des comptes.
-- `src/triggers` : Contient le trigger personnalisé qui envoie un e-mail de bienvenue.
-- `src/tests` : Contient les classes de test pour vérifier que tout fonctionne correctement.
+## 📂 Structure du Projet
 
----
+```bash
+src/
+├── classes/
+│   ├── AccountManager.cls         # Gestionnaire des comptes
+│   ├── ContactService.cls         # Service pour l'envoi d'e-mails de bienvenue
+│   └── ContactWelcomeHandler.cls  # Gestionnaire d'événements pour les contacts
+├── triggers/
+│   └── ContactWelcomeTrigger.trigger  # Trigger d'envoi d'e-mails de bienvenue
+└── tests/
+    └── AccountManagerTest.cls     # Tests unitaires
 
-## Exemples de Code 🔍
+```
 
-### Classe Apex pour la Gestion des Comptes
-```apex
-public class AccountManager {
-    public static Account createAccount(String name) {
-        Account acc = new Account(Name = name);
-        insert acc;
-        return acc;
-    }
+## Auteurs 👤
 
-    public static void updateAccount(Id accountId, String newName) {
-        Account acc = [SELECT Id, Name FROM Account WHERE Id = :accountId];
-        acc.Name = newName;
-        update acc;
-    }
-    
-    public static void deleteAccount(Id accountId) {
-        Account acc = [SELECT Id FROM Account WHERE Id = :accountId];
-        delete acc;
-    }
+AKAMI Mehdi - [Mon Profil GitHub](https://github.com/akamidev)
 
-    public static Account getAccount(Id accountId) {
-        return [SELECT Id, Name FROM Account WHERE Id = :accountId];
-    }
-}
+## Licence 📄
+
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](https://github.com/akamidev/Salesforce-Apex-Gestionnaire-de-Comptes/blob/master/LICENSE) pour plus de détails.
