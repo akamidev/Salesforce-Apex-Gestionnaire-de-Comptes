@@ -8,5 +8,5 @@
         <members>*</members>
         <name>ApexTrigger</name>
     </types>
-    <version>52.0</version>
+    <version>57.0</version> <!-- Utilise la version de l'API que tu utilises -->
 </Package>

@@ -1,4 +1,13 @@
 {
+
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
+  },
+  "author": "",
+  "license": "ISC",
+
   "name": "salesforce-app",
   "private": true,
   "version": "1.0.0",
